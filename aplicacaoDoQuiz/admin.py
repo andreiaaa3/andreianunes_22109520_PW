@@ -10,4 +10,4 @@ class FestivalAdmin (admin.ModelAdmin):
     ordering = ( "nome",)
     search_fields = ("nome",)
 
-admin.site.register(Festival, Festivaldmin)
+admin.site.register(Festival, FestivalAdmin)
