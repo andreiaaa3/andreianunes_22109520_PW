@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Ginasio
+from .models import Ginasio, Membro,Sessao, PersonalTrainer
 
 class GinasioAdmin (admin.ModelAdmin):
     list_display = ("nome",)
@@ -10,3 +10,6 @@ class GinasioAdmin (admin.ModelAdmin):
     search_fields = ("nome",)
 
 admin.site.register(Ginasio, GinasioAdmin)
+admin.site.register(PersonalTrainer)
+admin.site.register(Membro)
+admin.site.register(Sessao)

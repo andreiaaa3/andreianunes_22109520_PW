@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Receita
+from .models import Receita, Ingrediente
 
 class ReceitaAdmin (admin.ModelAdmin):
     list_display = ("nome",)
@@ -10,3 +10,4 @@ class ReceitaAdmin (admin.ModelAdmin):
     search_fields = ("nome",)
 
 admin.site.register(Receita, ReceitaAdmin)
+admin.site.register(Ingrediente)

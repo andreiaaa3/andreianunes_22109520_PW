@@ -1,19 +1,21 @@
 from django.db import models
 
-# Create your models here.
-class Receita(models.Model):
-    nome = models.CharField(max_length=100)
-        
-    def __str__(self):
-        return f'{self.nome}'
+
 
 
 class Ingrediente(models.Model):
     nome = models.CharField(max_length=100)
-    receita = models.ManyToManyField(Receita, related_name = "ingredientes")  
+    #receita = models.ManyToManyField(Receita, related_name = "ingredientes")  
     
     def __str__(self):
-        return f'{self.receita} {self.ingredientes}'
+        return f'{self.nome}'
+
+class Receita(models.Model):
+    nome = models.CharField(max_length=100)
+    ingrediente = models.ManyToManyField(Ingrediente, related_name="receitas")
+        
+    def __str__(self):
+        return f'{self.nome}'
 
 class Utilizador(models.Model):
     nome = models.CharField(max_length=100)

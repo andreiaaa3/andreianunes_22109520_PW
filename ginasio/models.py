@@ -2,9 +2,10 @@ from django.db import models
 
 class Ginasio(models.Model):
     nome = models.CharField(max_length=100)
-    #idade = models.IntegerField()
+
     def __str__(self):
         return f'{self.nome}'
+    
 class PersonalTrainer(models.Model):
     nome = models.CharField(max_length=100)
     idade = models.IntegerField()
