@@ -1,9 +1,10 @@
 from django.contrib import admin
-from models import Pessoa
 
-class Pessoa (admin.ModelAdmin):
-    list_display = ("nome", "idade")
-    ordering = ("nome", "idade")
-    search_fields = ("nome", "idade")
+from .models import Pessoa
 
-admin.site.register(Pessoa)
+class PessoaAdmin (admin.ModelAdmin):
+    list_display = ("nome", "idade",)
+    ordering = ("nome", "idade",)
+    search_fields = ("nome", "idade",)
+
+admin.site.register(Pessoa, PessoaAdmin)
