@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "ginasio",
     "receita",
     "loja",
-    "aplicacaoDoQuiz"
+    "aplicacaoDoQuiz",
+    "portfolio"
 ]
 
 MIDDLEWARE = [
