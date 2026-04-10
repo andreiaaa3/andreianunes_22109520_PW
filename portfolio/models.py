@@ -161,14 +161,16 @@ class MakingOf(models.Model):
 
     titulo = models.CharField(max_length=150)
     data = models.DateField()
+    entidade_alvo = models.CharField(max_length=20, choices=ENTIDADES, default="geral")
     objeto_nome = models.CharField(max_length=150, blank=True)
     descricao_processo = models.TextField()
     decisao_tomada = models.TextField(blank=True)
+    justificacao = models.TextField(blank=True)
     erro_encontrado = models.TextField(blank=True)
     correcao = models.TextField(blank=True)
     foto = models.ImageField(upload_to='makingof/', blank=True, null=True)
     usei_ai = models.BooleanField(default=False)
     como_usei_ai = models.TextField(blank=True)
-
+    
     def __str__(self):
         return self.titulo
