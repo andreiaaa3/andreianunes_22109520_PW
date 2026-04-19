@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}UCs{% endblock %}
+
+{% block content %}
+    <h2>Unidades Curriculares</h2>
+
+    {% for uc in ucs %}
+        <div class="card">
+            <p>{{ uc.nome }}</p>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem unidades curriculares.</p>
+        </div>
+    {% endfor %}
+{% endblock %}

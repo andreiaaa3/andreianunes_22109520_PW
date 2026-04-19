@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Docentes{% endblock %}
+
+{% block content %}
+    <h2>Docentes</h2>
+
+    {% for docente in docentes %}
+        <div class="card">
+            <p>{{ docente.nome }}</p>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem docentes.</p>
+        </div>
+    {% endfor %}
+{% endblock %}

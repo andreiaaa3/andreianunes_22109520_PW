@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Making Of{% endblock %}
+
+{% block content %}
+    <h2>Making Of</h2>
+
+    {% for makingof in makingofs %}
+        <div class="card">
+            <p>{{ makingof.titulo }}</p>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem registos de making of.</p>
+        </div>
+    {% endfor %}
+{% endblock %}

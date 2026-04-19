@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Competências{% endblock %}
+
+{% block content %}
+    <h2>Competências</h2>
+
+    {% for competencia in competencias %}
+        <div class="card">
+            <p>{{ competencia.nome }}</p>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem competências.</p>
+        </div>
+    {% endfor %}
+{% endblock %}

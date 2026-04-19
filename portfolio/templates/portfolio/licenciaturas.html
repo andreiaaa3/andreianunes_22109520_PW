@@ -1,0 +1,19 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Licenciaturas{% endblock %}
+
+{% block content %}
+    <h2>Licenciaturas</h2>
+
+    {% for licenciatura in licenciaturas %}
+        <div class="card">
+            <a href="{% url 'licenciatura' licenciatura.id %}">
+                {{ licenciatura.nome }} - {{ licenciatura.sigla }}
+            </a>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem licenciaturas.</p>
+        </div>
+    {% endfor %}
+{% endblock %}

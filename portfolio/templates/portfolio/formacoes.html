@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Formações{% endblock %}
+
+{% block content %}
+    <h2>Formações</h2>
+
+    {% for formacao in formacoes %}
+        <div class="card">
+            <p>{{ formacao.titulo }}</p>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem formações.</p>
+        </div>
+    {% endfor %}
+{% endblock %}

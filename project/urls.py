@@ -26,7 +26,8 @@ urlpatterns = [
     ##path("ginasio/", include("ginasio.urls")),   
     ##path("receita/", include("receita.urls")),   
     ##path("loja/", include("loja.urls")),   
-    ##path("portfolio/", include("portfolio.urls")),   
+    path("portfolio/", include("portfolio.urls")),   
+
 ]
 
 if settings.DEBUG:

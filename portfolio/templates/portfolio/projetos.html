@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Projetos{% endblock %}
+
+{% block content %}
+    <h2>Projetos</h2>
+
+    {% for projeto in projetos %}
+        <div class="card">
+            <p>{{ projeto.titulo }}</p>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem projetos.</p>
+        </div>
+    {% endfor %}
+{% endblock %}

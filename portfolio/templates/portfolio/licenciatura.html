@@ -1,0 +1,38 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}{{ licenciatura.nome }}{% endblock %}
+
+{% block content %}
+    <h2>{{ licenciatura.nome }}</h2>
+
+    <div class="card">
+        <p><strong>Sigla:</strong> {{ licenciatura.sigla }}</p>
+
+        {% if licenciatura.descricao %}
+            <p><strong>Descrição:</strong> {{ licenciatura.descricao }}</p>
+        {% endif %}
+
+        {% if licenciatura.duracao %}
+            <p><strong>Duração:</strong> {{ licenciatura.duracao }} anos</p>
+        {% endif %}
+
+        {% if licenciatura.ects %}
+            <p><strong>ECTS:</strong> {{ licenciatura.ects }}</p>
+        {% endif %}
+
+        {% if licenciatura.imagem %}
+            <img src="{{ licenciatura.imagem.url }}" alt="{{ licenciatura.nome }}" width="300">
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h3>Unidades Curriculares</h3>
+        <ul>
+            {% for uc in licenciatura.ucs.all %}
+                <li>{{ uc.nome }}</li>
+            {% empty %}
+                <li>Sem unidades curriculares associadas.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

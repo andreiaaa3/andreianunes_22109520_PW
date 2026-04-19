@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Portfolio{% endblock %}</title>
+
+    <style>
+        body {
+            background-color: #eaf4ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #1e293b;
+        }
+
+        header {
+            background-color: #bfdbfe;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: #1d4ed8;
+        }
+
+        nav {
+            background-color: #93c5fd;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        nav a:hover {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        main {
+            padding: 30px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+    </header>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'licenciaturas' %}">Licenciaturas</a>
+        <a href="{% url 'docentes' %}">Docentes</a>
+        <a href="{% url 'ucs' %}">UCs</a>
+        <a href="{% url 'projetos' %}">Projetos</a>
+        <a href="{% url 'tecnologias' %}">Tecnologias</a>
+        <a href="{% url 'tfcs' %}">TFCs</a>
+        <a href="{% url 'competencias' %}">Competências</a>
+        <a href="{% url 'formacoes' %}">Formações</a>
+        <a href="{% url 'makingof' %}">Making Of</a>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

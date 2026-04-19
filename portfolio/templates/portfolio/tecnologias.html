@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Tecnologias{% endblock %}
+
+{% block content %}
+    <h2>Tecnologias</h2>
+
+    {% for tecnologia in tecnologias %}
+        <div class="card">
+            <p>{{ tecnologia.nome }}</p>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>Sem tecnologias.</p>
+        </div>
+    {% endfor %}
+{% endblock %}
