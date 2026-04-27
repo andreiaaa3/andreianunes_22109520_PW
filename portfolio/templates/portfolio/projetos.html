@@ -15,6 +15,7 @@
              <a href="{% url 'projeto' projeto.id %}">{{ projeto.titulo }}</a>
                <br>
              <a href="{% url 'edita_projeto' projeto.id %}">Editar</a>
+             <a href="{% url 'apaga_projeto' projeto.id %}">Apagar</a>
         </div>
     {% empty %}
         <div class="card">

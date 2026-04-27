@@ -73,3 +73,8 @@ def edita_projeto_view(request, id):
 
     context = {"form": form, "projeto": projeto}
     return render(request, "portfolio/edita_projeto.html", context)
+
+def apaga_projeto_view(request, id):
+    projeto = Projeto.objects.get(id=id)
+    projeto.delete()
+    return redirect("projetos")
