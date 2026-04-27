@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import (Licenciatura, Docente, UnidadeCurricular, Tecnologia, Projeto, TFC, Competencia, Formacao, MakingOf)
+from .forms import ProjetoForm
+from django.shortcuts import render, redirect
 
 def home(request):
     return render(request, "portfolio/home.html")
@@ -43,3 +45,31 @@ def formacoes_view(request):
 def makingof_view(request):
     makingofs = MakingOf.objects.all()
     return render(request, "portfolio/makingof.html", {"makingofs": makingofs})
+
+def novo_projeto_view(request):
+    form = ProjetoForm(request.POST or None, request.FILES or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect("projetos")
+
+    context = {"form": form}
+    return render(request, "portfolio/novo_projeto.html", context)
+
+def projeto_view(request, id):
+    projeto = Projeto.objects.get(id=id)
+    return render(request, "portfolio/projeto.html", {"projeto": projeto})
+
+def edita_projeto_view(request, id):
+    projeto = Projeto.objects.get(id=id)
+
+    if request.POST:
+        form = ProjetoForm(request.POST or None, request.FILES, instance=projeto)
+        if form.is_valid():
+            form.save()
+            return redirect("projetos")
+    else:
+        form = ProjetoForm(instance=projeto)
+
+    context = {"form": form, "projeto": projeto}
+    return render(request, "portfolio/edita_projeto.html", context)

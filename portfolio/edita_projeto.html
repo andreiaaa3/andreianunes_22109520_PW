@@ -1,0 +1,15 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Editar Projeto{% endblock %}
+
+{% block content %}
+    <h2>Editar Projeto</h2>
+
+    <div class="card">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Guardar Alterações">
+        </form>
+    </div>
+{% endblock %}

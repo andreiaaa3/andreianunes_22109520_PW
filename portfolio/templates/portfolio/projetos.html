@@ -2,12 +2,19 @@
 
 {% block title %}Projetos{% endblock %}
 
+
 {% block content %}
     <h2>Projetos</h2>
 
+     <div class="card">
+        <a href="{% url 'projeto_novo' %}">Novo Projeto</a>
+    </div>
+
     {% for projeto in projetos %}
         <div class="card">
-            <p>{{ projeto.titulo }}</p>
+             <a href="{% url 'projeto' projeto.id %}">{{ projeto.titulo }}</a>
+               <br>
+             <a href="{% url 'edita_projeto' projeto.id %}">Editar</a>
         </div>
     {% empty %}
         <div class="card">

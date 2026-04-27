@@ -1,0 +1,64 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}{{ projeto.titulo }}{% endblock %}
+
+{% block content %}
+    <h2>{{ projeto.titulo }}</h2>
+
+    <div class="card">
+        <p><strong>Título:</strong> {{ projeto.titulo }}</p>
+
+        {% if projeto.descricao %}
+            <p><strong>Descrição:</strong> {{ projeto.descricao }}</p>
+        {% endif %}
+
+        {% if projeto.conceitos_aplicados %}
+            <p><strong>Conceitos aplicados:</strong> {{ projeto.conceitos_aplicados }}</p>
+        {% endif %}
+
+        {% if projeto.data %}
+            <p><strong>Data:</strong> {{ projeto.data }}</p>
+        {% endif %}
+
+        {% if projeto.unidade_curricular %}
+            <p><strong>Unidade curricular:</strong> {{ projeto.unidade_curricular }}</p>
+        {% endif %}
+
+        {% if projeto.git_url %}
+            <p>
+                <strong>Git url:</strong>
+                <a href="{{ projeto.git_url }}" target="_blank">{{ projeto.git_url }}</a>
+            </p>
+        {% endif %}
+
+        {% if projeto.demo_url %}
+            <p>
+                <strong>Demo url:</strong>
+                <a href="{{ projeto.demo_url }}" target="_blank">{{ projeto.demo_url }}</a>
+            </p>
+        {% endif %}
+
+        {% if projeto.video_url %}
+            <p>
+                <strong>Video url:</strong>
+                <a href="{{ projeto.video_url }}" target="_blank">{{ projeto.video_url }}</a>
+            </p>
+        {% endif %}
+
+        {% if projeto.imagem %}
+            <p><strong>Imagem:</strong></p>
+            <img src="{{ projeto.imagem.url }}" alt="{{ projeto.titulo }}" width="300">
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h3>Tecnologias</h3>
+        <ul>
+            {% for tecnologia in projeto.tecnologias.all %}
+                <li>{{ tecnologia.nome }}</li>
+            {% empty %}
+                <li>Sem tecnologias associadas.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
