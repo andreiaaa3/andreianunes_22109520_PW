@@ -11,3 +11,7 @@ class RegistoForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'first_name',
                   'last_name', 'password1', 'password2']
+        
+
+class MagicLinkForm(forms.Form):
+    email = forms.EmailField(label="Email")

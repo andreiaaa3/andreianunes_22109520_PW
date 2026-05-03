@@ -1,0 +1,27 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<h1>Artigos</h1>
+
+{% if request.user.is_authenticated %}
+    <a href="{% url 'novo_artigo' %}">Novo artigo</a>
+{% endif %}
+
+{% for artigo in artigos %}
+    <h2>
+        <a href="{% url 'artigo' artigo.id %}">{{ artigo.titulo }}</a>
+    </h2>
+
+    <p>{{ artigo.texto }}</p>
+    <p>Autor: {{ artigo.autor.username }}</p>
+    <p>Likes: {{ artigo.likes.count }}</p>
+
+    {% if request.user == artigo.autor %}
+        <a href="{% url 'edita_artigo' artigo.id %}">Editar</a>
+    {% endif %}
+
+    <hr>
+{% endfor %}
+
+{% endblock %}

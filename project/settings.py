@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "loja",
     "aplicacaoDoQuiz",
     "portfolio",
-    "accounts"
+    "accounts",
+    "artigos",
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL pública para aceder aos ficheiros
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+DEFAULT_FROM_EMAIL = "noreply@portfolio.local"
