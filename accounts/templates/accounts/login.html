@@ -1,0 +1,32 @@
+{% extends 'accounts/layout.html' %}
+
+{% block content %}
+
+<h3>Login</h3>
+
+{% if mensagem %}
+    <p style="color: red;">{{ mensagem }}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+    </p>
+
+    <p>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+    </p>
+
+    <button type="submit">Entrar</button>
+</form>
+
+<p>
+    Ainda não tens conta?
+    <a href="{% url 'registo' %}">Regista-te aqui</a>
+</p>
+
+{% endblock %}

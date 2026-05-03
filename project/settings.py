@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     "receita",
     "loja",
     "aplicacaoDoQuiz",
-    "portfolio"
+    "portfolio",
+    "accounts"
 ]
 
 MIDDLEWARE = [

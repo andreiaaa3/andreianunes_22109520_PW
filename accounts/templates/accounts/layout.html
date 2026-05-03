@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha App</title>
+</head>
+<body>
+
+    <nav>
+        <h1>Minha App</h1>
+
+        <ul>
+            <li><a href="{% url 'user' %}">Perfil</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'registo' %}">Registo</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Minha App</p>
+    </footer>
+
+</body>
+</html>

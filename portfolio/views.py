@@ -1,7 +1,12 @@
-from django.shortcuts import render
+
 from .models import (Licenciatura, Docente, UnidadeCurricular, Tecnologia, Projeto, TFC, Competencia, Formacao, MakingOf)
 from .forms import ProjetoForm
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+
+def is_gestor_portfolio(user):
+    return user.is_authenticated and user.groups.filter(name="gestor-portfolio").exists()
 
 def home(request):
     return render(request, "portfolio/home.html")
@@ -46,6 +51,8 @@ def makingof_view(request):
     makingofs = MakingOf.objects.all()
     return render(request, "portfolio/makingof.html", {"makingofs": makingofs})
 
+@login_required
+@user_passes_test(is_gestor_portfolio)
 def novo_projeto_view(request):
     form = ProjetoForm(request.POST or None, request.FILES or None)
 
@@ -60,6 +67,8 @@ def projeto_view(request, id):
     projeto = Projeto.objects.get(id=id)
     return render(request, "portfolio/projeto.html", {"projeto": projeto})
 
+@login_required
+@user_passes_test(is_gestor_portfolio)
 def edita_projeto_view(request, id):
     projeto = Projeto.objects.get(id=id)
 
@@ -74,6 +83,8 @@ def edita_projeto_view(request, id):
     context = {"form": form, "projeto": projeto}
     return render(request, "portfolio/edita_projeto.html", context)
 
+@login_required
+@user_passes_test(is_gestor_portfolio)
 def apaga_projeto_view(request, id):
     projeto = Projeto.objects.get(id=id)
     projeto.delete()

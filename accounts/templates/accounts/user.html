@@ -1,0 +1,13 @@
+{% extends 'accounts/layout.html' %}
+
+{% block content %}
+
+<h3>Área do utilizador</h3>
+
+<p>Olá, {{ request.user.username }}.</p>
+
+<p>
+    <a href="{% url 'logout' %}">Terminar sessão</a>
+</p>
+
+{% endblock %}
