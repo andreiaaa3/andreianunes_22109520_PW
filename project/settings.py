@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     "portfolio",
     "accounts",
     "artigos",
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -77,17 +80,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
+import environ
+import os
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# inicializar environ
+env = environ.Env()
 
+# ler ficheiro .env (opcional mas recomendado)
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+DATABASES = {
+    "default": env.db("DATABASE_URL"),
+    }
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": env("CLOUDINARY_API_KEY"),
+    "API_SECRET": env("CLOUDINARY_API_SECRET"),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -126,6 +139,16 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 import os
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
 
 # Pasta no servidor onde os ficheiros vão ser guardados
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

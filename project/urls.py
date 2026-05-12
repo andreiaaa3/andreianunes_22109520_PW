@@ -30,7 +30,6 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),   
     path('artigos/', include('artigos.urls')),
 
-
 ]
 
 if settings.DEBUG:

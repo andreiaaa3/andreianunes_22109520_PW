@@ -16,7 +16,7 @@
     <p>{{ artigo.texto }}</p>
     <p>Autor: {{ artigo.autor.username }}</p>
     <p>Likes: {{ artigo.likes.count }}</p>
-
+pip freeze > requirements.txt
     {% if request.user == artigo.autor %}
         <a href="{% url 'edita_artigo' artigo.id %}">Editar</a>
     {% endif %}
